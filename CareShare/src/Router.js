@@ -1,4 +1,5 @@
 import React from 'react';
+import { Image } from 'react-native';
 import {
     Router,
     Scene,
@@ -10,9 +11,19 @@ import LoginScreen from './components/LoginScreen';
 import VerifyEmailScreen from './components/VerifyEmailScreen';
 import ChooseHomeScreen from './components/ChooseHomeScreen';
 import MainScreen from './components/MainScreen';
-import MenuIcon from '../resources/menuIcon/menu.png';
 import MenuScreen from './components/MenuScreen';
+import OfferRide from './components/OfferRide';
 
+const DrawerIcon = () => {
+    return (<Image
+        style={{
+            width: 30,
+            height: 30,
+            padding: 10,
+        }}
+        source={require('../resources/menuIcon/menu.png')}
+    />);
+};
 
 const RouterComponent = () => {
     return (
@@ -28,9 +39,8 @@ const RouterComponent = () => {
                     key="mainDrawer"
                     contentComponent={MenuScreen}
                     type='reset'
-                    drawerPosition={'left'}
-                    drawerImage={MenuIcon}
-                    /* navBar={NavBar} */
+                    drawerIcon={DrawerIcon}
+                    //navBar={NavBar} 
                 >
                     <Stack
                         key="main"
@@ -39,6 +49,10 @@ const RouterComponent = () => {
                         <Scene
                             key="mainScreen"
                             component={MainScreen}
+                        />
+                        <Scene
+                            key="offerRide"
+                            component={OfferRide}
                         />
                     </Stack>
                 </Drawer>

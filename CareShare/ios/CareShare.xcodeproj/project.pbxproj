@@ -1382,7 +1382,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mango.development.CareShare;
 				PRODUCT_NAME = CareShare;
-				PROVISIONING_PROFILE = "a10be0f2-ca3f-4d73-b4cc-2cc8aa1e5618";
+				PROVISIONING_PROFILE = "a2f94985-e4c9-4f64-aa65-1884843587d6";
 				PROVISIONING_PROFILE_SPECIFIER = "Care Share Distribution Ad Hoc";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

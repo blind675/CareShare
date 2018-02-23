@@ -8,10 +8,13 @@ class App extends Component {
   state = {
     name: '',
     email: '',
+    licencesCount: 20,
+    companyDomain: '',
+    logo: null,
+    longitude: 21.22941618,
+    latitude: 45.75788394,
     companies: [],
     expanded: false,
-    licencesCount: 50,
-    logo: null,
   };
 
   componentWillMount() {
@@ -46,7 +49,15 @@ class App extends Component {
   }
 
   onPressAddCompany = () => {
-    let { name, email, licencesCount, logo } = this.state;
+    let {
+      name,
+      email,
+      licencesCount,
+      logo,
+      companyDomain,
+      longitude,
+      latitude
+      } = this.state;
 
     if (name && email) {
       var messageListRef = firebase.database().ref('/companies');
@@ -55,7 +66,10 @@ class App extends Component {
         name,
         email,
         licencesCount,
-        logo
+        logo,
+        companyDomain,
+        longitude,
+        latitude
       })
     }
   }
@@ -94,17 +108,23 @@ class App extends Component {
         }}
         >
           <TextField
-            label='Number of licences'
-            value={'' + this.state.licencesCount}
-            onChangeText={(licencesCount) => this.setState({ licencesCount })}
+            label='Company Domain'
+            value={'' + this.state.companyDomain}
+            onChangeText={(companyDomain) => this.setState({ companyDomain })}
           />
-          <Image
-            source={{ uri: this.state.logo }}
-            style={{
-              width: 100,
-              height: 100,
-              padding: 10,
-            }}
+          <TextField
+            label='Longitude'
+            value={'' + this.state.longitude}
+            onChangeText={(longitude) =>
+              this.setState({ longitude: parseFloat(longitude) })
+            }
+          />
+          <TextField
+            label='Latitude'
+            value={'' + this.state.latitude}
+            onChangeText={(latitude) =>
+              this.setState({ latitude: parseFloat(latitude) })
+            }
           />
         </View>
       </View>);
@@ -154,6 +174,13 @@ class App extends Component {
               value={email}
               onChangeText={(email) => this.setState({ email })}
             />
+            <TextField
+              label='Number of licences'
+              value={'' + this.state.licencesCount}
+              onChangeText={(licencesCount) =>
+                this.setState({ licencesCount: parseInt(licencesCount) })
+              }
+            />
             <Button
               onPress={this.onPressAddCompany}
               title="Add"
@@ -173,7 +200,7 @@ class App extends Component {
               flexDirection: 'row',
               alignItems: 'center'
             }}>
-              <Text>{item.name} - {item.email} - {item.licencesCount} - </Text>
+              <Text>{item.name} - {item.email} - {item.licencesCount} - {item.companyDomain}</Text>
               <Image source={{ uri: item.logo }}
                 style={{
                   width: 40,

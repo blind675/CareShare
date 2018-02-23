@@ -7,10 +7,11 @@ class MenuScreen extends Component {
         return (
             <View style={styles.container}>
                 <Text>Menu</Text>
-                <Button title='1' onPress={Actions.pop} />
-                <Button title='2' onPress={Actions.pop} />
-                <Button title='3' onPress={Actions.pop} />
-                <Button title='4' onPress={Actions.pop} />
+                <Button title='Main' onPress={Actions.mainDrawer} />
+                <Button title='Profile' onPress={Actions.pop} />
+                <Button title='Market' onPress={Actions.pop} />
+                <Button title='Settings' onPress={Actions.pop} />
+                <Button title='About' onPress={Actions.pop} />
             </View >
         );
     }
@@ -22,8 +23,8 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'transparent',
-        borderWidth: 2,
-        borderColor: 'red',
+        borderWidth: 1,
+        borderColor: 'grey',
     },
 };
 

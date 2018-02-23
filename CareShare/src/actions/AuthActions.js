@@ -67,7 +67,12 @@ const createProfil = (profileId, email, company, dispatch) => {
         carPoints: 0,
         creadtionDate: new Date().toDateString(),
         verified: false,
-        companyUid: company.uid,
+        company: {
+            companyUid: company.uid,
+            companyDomain: company.companyDomain,
+            companyLongitude: company.longitude,
+            companyLatitude: company.latitude,
+        }
     };
 
     console.log('- Writing user in /profile/userId userObject: ', profileObject);
@@ -152,7 +157,7 @@ export const checkIfAccountVerified = () => {
                                 saveProfile({ ...profile, verified: true });
 
                                 // change profile count -1
-                                const companyRef = firebase.database().ref(`/companies/${profile.companyUid}`);
+                                const companyRef = firebase.database().ref(`/companies/${profile.company.companyUid}`);
 
                                 companyRef.once('value', (snapshot) => {
                                     companyRef.update({
