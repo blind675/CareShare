@@ -12,6 +12,7 @@ class SplashScreen extends Component {
     componentDidMount() {
         this.props.loadProfile();
         this.props.loadHomeLocation();
+        this.props.loadRide();
     }
 
     componentWillReceiveProps(nextProps) {

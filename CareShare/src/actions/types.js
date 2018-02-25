@@ -1,6 +1,7 @@
 // store keys
 export const STORE_PROFILE_KEY = '@profile:key';
 export const STORE_HOME_KEY = '@home:key';
+export const STORE_RIDE_KEY = '@ride:key';
 
 // companies
 export const COMPANIES_LIST_GET_FAIL = 'get_fail_companies';
@@ -17,3 +18,9 @@ export const LOCATION_HOME_SAVE_FAIL = 'save_fail_home_locations';
 export const LOCATION_HOME_SAVE_SUCCESS = 'save_success_home_locations';
 export const LOCATION_HOME_LOAD_FAIL = 'load_fail_home_locations';
 export const LOCATION_HOME_LOAD_SUCCESS = 'load_success_home_locations';
+
+// offer
+export const OFFER_CREATE_FAIL = 'save_fail_offer';
+export const OFFER_CREATE_SUCCESS = 'save_success_offer';
+export const OFFER_GET_SUCESS = 'get_success_offer';
+export const OFFER_GET_FAIL = 'get_fail_offer';

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
 
+import * as actions from '../actions';
+
 class MainScreen extends Component {
     componentDidMount() {
         if (_.isEmpty(this.props.homeLocation)) {
@@ -32,7 +34,7 @@ class MainScreen extends Component {
                     }}
                     onPress={() => Actions.offerRide()}
                 >
-                    <Text style={{ color: 'white' }}> Ofera cursa azi </Text>
+                    <Text style={{ color: 'white' }}> Ofera cursa </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={{
@@ -42,9 +44,9 @@ class MainScreen extends Component {
                         width: 150,
                         alignItems: 'center',
                     }}
-                    onPress={() => Actions.offerRide()}
+                    onPress={() => this.props.getRides()}
                 >
-                    <Text style={{ color: 'white' }}> Ofera cursa maine </Text>
+                    <Text style={{ color: 'white' }}> Cauta oferte </Text>
                 </TouchableOpacity>
             </View>
         );
@@ -57,4 +59,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, null)(MainScreen);
+export default connect(mapStateToProps, actions)(MainScreen);

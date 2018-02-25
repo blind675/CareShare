@@ -31,7 +31,7 @@ export const loadHomeLocation = () => {
     return (dispatch) => {
         store.get(STORE_HOME_KEY)
         .then((position) => {
-            console.log(' - Load Home Location Error: ', position);
+            console.log(' - Load Home Location: ', position);
             dispatch({
                 payload: position,
                 type: LOCATION_HOME_LOAD_SUCCESS
