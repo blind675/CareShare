@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { TextField } from 'react-native-material-textfield';
 import SwitchSelector from 'react-native-switch-selector';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 
 import * as actions from '../actions';
 
@@ -67,6 +68,20 @@ class OfferRide extends Component {
                     }}
                 >
                     <Text style={{ color: 'white' }}> Adauga Oferta </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={Actions.pop}
+                    style={{
+                        width: 150,
+                        height: 45,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: '#3B5998',
+                        margin: 50,
+                    }}
+                >
+                    <Text style={{ color: 'white' }}> Inapoi </Text>
                 </TouchableOpacity>
             </View>
         );

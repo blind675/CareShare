@@ -13,6 +13,7 @@ import ChooseHomeScreen from './components/ChooseHomeScreen';
 import MainScreen from './components/MainScreen';
 import MenuScreen from './components/MenuScreen';
 import OfferRide from './components/OfferRide';
+import ProfileScreen from './components/ProfileScreen';
 
 const DrawerIcon = () => {
     return (<Image
@@ -40,7 +41,7 @@ const RouterComponent = () => {
                     contentComponent={MenuScreen}
                     type='reset'
                     drawerIcon={DrawerIcon}
-                    //navBar={NavBar} 
+                //navBar={NavBar} 
                 >
                     <Stack
                         key="main"
@@ -53,6 +54,15 @@ const RouterComponent = () => {
                         <Scene
                             key="offerRide"
                             component={OfferRide}
+                        />
+                    </Stack>
+                    <Stack
+                        key="profile"
+                        title="Profile"
+                    >
+                        <Scene
+                            key="profileScreen"
+                            component={ProfileScreen}
                         />
                     </Stack>
                 </Drawer>

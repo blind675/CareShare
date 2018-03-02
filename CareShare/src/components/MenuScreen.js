@@ -7,8 +7,8 @@ class MenuScreen extends Component {
         return (
             <View style={styles.container}>
                 <Text>Menu</Text>
-                <Button title='Main' onPress={Actions.mainDrawer} />
-                <Button title='Profile' onPress={Actions.pop} />
+                <Button title='Main' onPress={Actions.main} />
+                <Button title='Profile' onPress={Actions.profile} />
                 <Button title='Market' onPress={Actions.pop} />
                 <Button title='Settings' onPress={Actions.pop} />
                 <Button title='About' onPress={Actions.pop} />

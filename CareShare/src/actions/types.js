@@ -24,3 +24,7 @@ export const OFFER_CREATE_FAIL = 'save_fail_offer';
 export const OFFER_CREATE_SUCCESS = 'save_success_offer';
 export const OFFER_GET_SUCESS = 'get_success_offer';
 export const OFFER_GET_FAIL = 'get_fail_offer';
+
+// rides
+export const RIDES_GET_SUCCESS = 'get_success_rides';
+export const RIDES_GET_FAIL = 'get_fail_rides';

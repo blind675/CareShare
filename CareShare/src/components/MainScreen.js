@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
@@ -38,7 +38,7 @@ class MainScreen extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={{
-                        marginTop: 50,
+                        marginTop: 20,
                         padding: 10,
                         backgroundColor: '#3B5998',
                         width: 150,
@@ -48,6 +48,44 @@ class MainScreen extends Component {
                 >
                     <Text style={{ color: 'white' }}> Cauta oferte </Text>
                 </TouchableOpacity>
+                <Text
+                    style={{
+                        marginTop: 20,
+                    }}
+                >
+                    {'Oferte de curse: '}
+                </Text>
+                <FlatList
+                    style={{
+                        width: 250,
+                        marginTop: 20,
+                    }}
+                    data={this.props.rides}
+                    renderItem={({ item }) => {
+                        return (
+                            <View
+                                style={{
+                                    padding: 10,
+                                    borderBottomColor: 'lightgray',
+                                    borderBottomWidth: 1,
+                                    flexDirection: 'row',
+                                    alignItems: 'center'
+                                }}
+                            >
+                                <Image
+                                    source={{ uri: item.driver.profileIcon }}
+                                    style={{
+                                        width: 40,
+                                        height: 40,
+                                        marginRight: 10
+                                    }}
+                                />
+                                <Text>{item.driver.profileName} - {item.departureTime} - {item.carPlaces} </Text>
+                            </View>
+                        );
+                    }}
+                    keyExtractor={(item) => item.uid}
+                />
             </View>
         );
     }
@@ -56,6 +94,7 @@ class MainScreen extends Component {
 const mapStateToProps = state => {
     return {
         homeLocation: state.homeLocation,
+        rides: state.rides,
     };
 };
 

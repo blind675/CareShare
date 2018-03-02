@@ -13,12 +13,7 @@ export const offerRide = ({ direction, carPlaces, departureTime }) => {
     return (dispatch, getState) => {
         const { profile, homeLocation } = getState();
 
-        console.log('profile: ', profile);
-        console.log('homeLocation: ', homeLocation);
         console.log('direction: ', direction);
-        console.log('carPlaces: ', carPlaces);
-        console.log('departureTime: ', departureTime);
-
         const offerObject =
             {
                 carPlaces,
@@ -34,9 +29,11 @@ export const offerRide = ({ direction, carPlaces, departureTime }) => {
 
         firebase.database().ref(`/offers/${profile.company.companyDomain}/${direction}`)
             .push(offerObject)
-            .than(() => {
+            .then(() => {
                 saveRide(offerObject);
 
+                console.log('Saved Offer Object: ', offerObject);
+                
                 dispatch({
                     payload: offerObject,
                     type: OFFER_CREATE_SUCCESS
