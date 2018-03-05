@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
@@ -11,7 +11,13 @@ class MainScreen extends Component {
         if (_.isEmpty(this.props.homeLocation)) {
             console.log(' - Go To: choose home location screen');
             Actions.chooseHome();
+        } else {
+            this.props.getRides();
         }
+    }
+
+    renderFoundRequests() {
+        return `Found ${this.props.rides.length} rides for you`;
     }
 
     render() {
@@ -19,73 +25,139 @@ class MainScreen extends Component {
             <View
                 style={{
                     flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center'
                 }}
             >
-                <Text> Ecanul prinicipal </Text>
-                <TouchableOpacity
+                <View
                     style={{
-                        marginTop: 50,
-                        padding: 10,
-                        backgroundColor: '#3B5998',
-                        width: 150,
+                        backgroundColor: '#5B85AA',
+                        flex: 0.5,
                         alignItems: 'center',
-                    }}
-                    onPress={() => Actions.offerRide()}
-                >
-                    <Text style={{ color: 'white' }}> Ofera cursa </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={{
-                        marginTop: 20,
-                        padding: 10,
-                        backgroundColor: '#3B5998',
-                        width: 150,
-                        alignItems: 'center',
-                    }}
-                    onPress={() => this.props.getRides()}
-                >
-                    <Text style={{ color: 'white' }}> Cauta oferte </Text>
-                </TouchableOpacity>
-                <Text
-                    style={{
-                        marginTop: 20,
+                        justifyContent: 'center',
                     }}
                 >
-                    {'Oferte de curse: '}
-                </Text>
-                <FlatList
-                    style={{
-                        width: 250,
-                        marginTop: 20,
-                    }}
-                    data={this.props.rides}
-                    renderItem={({ item }) => {
-                        return (
-                            <View
+                    <View
+                        style={{
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flex: 1,
+                        }}
+                    >
+                        <TouchableOpacity
+                            style={{
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                            }}
+                            onPress={() => Actions.offerRide()}
+                        >
+                            <Image
+                                source={require('../../resources/plus/plus.png')}
                                 style={{
-                                    padding: 10,
-                                    borderBottomColor: 'lightgray',
-                                    borderBottomWidth: 1,
-                                    flexDirection: 'row',
-                                    alignItems: 'center'
+                                    width: 40,
+                                    height: 40,
                                 }}
-                            >
-                                <Image
-                                    source={{ uri: item.driver.profileIcon }}
-                                    style={{
-                                        width: 40,
-                                        height: 40,
-                                        marginRight: 10
-                                    }}
-                                />
-                                <Text>{item.driver.profileName} - {item.departureTime} - {item.carPlaces} </Text>
-                            </View>
-                        );
+                            />
+                            <Text
+                                style={{
+                                    color: 'white',
+                                    fontSize: 18,
+                                    margin: 8,
+                                }}
+                            > {'<- To work'} </Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View
+                        style={{
+                            height: 1,
+                            width: '100%',
+                            backgroundColor: 'rgba(255, 255, 255, 0.3)'
+                        }}
+                    />
+                    <TouchableOpacity
+                        style={{
+                            height: 30,
+                            width: '100%',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: 'white',
+                                fontSize: 16,
+                            }}
+                        >
+                            Found 0 requests for you
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                <View
+                    style={{
+                        backgroundColor: '#EE4266',
+                        flex: 0.5,
+                        alignItems: 'center',
+                        justifyContent: 'center',
                     }}
-                    keyExtractor={(item) => item.uid}
-                />
+                >
+                    <View
+                        style={{
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flex: 1,
+                        }}
+                    >
+                        <TouchableOpacity
+                            style={{
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                            }}
+                            onPress={() => Actions.offerRide()}
+                        >
+                            <Image
+                                source={require('../../resources/plus/plus.png')}
+                                style={{
+                                    width: 40,
+                                    height: 40,
+                                }}
+                            />
+                            <Text
+                                style={{
+                                    color: 'white',
+                                    fontSize: 18,
+                                    margin: 8,
+                                }}
+                            > {'From work ->'} </Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View
+                        style={{
+                            height: 1,
+                            width: '100%',
+                            backgroundColor: 'rgba(255, 255, 255, 0.3)'
+                        }}
+                    />
+                    <TouchableOpacity
+                        style={{
+                            height: 30,
+                            width: '100%',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}
+                        onPress={() => {
+                            if (this.props.rides.length > 0) {
+                                Actions.selectRide();
+                            }
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: 'white',
+                                fontSize: 16,
+                            }}
+                        >
+                            {this.renderFoundRequests()}
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }

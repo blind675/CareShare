@@ -14,6 +14,7 @@ import MainScreen from './components/MainScreen';
 import MenuScreen from './components/MenuScreen';
 import OfferRide from './components/OfferRide';
 import ProfileScreen from './components/ProfileScreen';
+import SelectRideList from './components/SelectRideList';
 
 const DrawerIcon = () => {
     return (<Image
@@ -54,6 +55,10 @@ const RouterComponent = () => {
                         <Scene
                             key="offerRide"
                             component={OfferRide}
+                        />
+                        <Scene
+                            key="selectRide"
+                            component={SelectRideList}
                         />
                     </Stack>
                     <Stack

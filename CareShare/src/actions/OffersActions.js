@@ -57,14 +57,14 @@ export const loadRide = () => {
         store.get(STORE_RIDE_KEY)
             .then((ride) => {
                 if (ride) {
-                    console.log('- Loaded ride from phone: ', ride);
+                    console.log(' - Loaded ride from phone: ', ride);
 
                     dispatch({
                         payload: ride,
                         type: OFFER_GET_SUCESS,
                     });
                 } else {
-                    console.log('- Loaded ride - none found.');
+                    console.log(' - Loaded ride - none found.');
                     dispatch({
                         type: OFFER_GET_FAIL
                     });
